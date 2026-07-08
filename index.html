@@ -355,16 +355,43 @@
 
   .hero-stats{
     display:flex;
-    gap:34px;
+    align-items:center;
+    gap:0;
+    background:#fff;
+    border-radius:20px;
+    padding:18px 8px;
+    box-shadow:0 14px 34px -20px rgba(28,53,80,0.28);
+    max-width:520px;
+  }
+  .hero-stats div{
+    flex:1;
+    text-align:center;
+    padding:0 12px;
+    position:relative;
+  }
+  .hero-stats div + div::before{
+    content:"";
+    position:absolute;
+    right:100%;
+    top:50%;
+    transform:translateY(-50%);
+    width:1px;
+    height:34px;
+    background:var(--sky-2);
   }
   .hero-stats div h3{
-    font-size:2rem;
+    font-size:1.7rem;
     color:var(--navy);
+    line-height:1.2;
+    white-space:nowrap;
   }
   .hero-stats div span{
-    font-size:0.85rem;
+    font-size:0.78rem;
     color:var(--navy-soft);
     font-weight:700;
+    display:block;
+    margin-top:2px;
+    white-space:nowrap;
   }
 
   .hero-visual{
@@ -641,11 +668,11 @@
   .cta-section{
     background:linear-gradient(120deg, var(--blue-strong), var(--blue-deep));
     border-radius:44px;
-    padding:64px 48px;
+    padding:64px 56px;
     display:grid;
-    grid-template-columns:1.2fr 0.8fr;
-    align-items:center;
-    gap:30px;
+    grid-template-columns:1fr 1fr;
+    align-items:stretch;
+    gap:48px;
     color:#fff;
     position:relative;
     overflow:hidden;
@@ -658,28 +685,69 @@
     left:-20px; bottom:-40px;
     transform:rotate(-12deg);
   }
+  .cta-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
   .cta-section h2{ color:#fff; font-size:2.3rem; margin-bottom:14px; }
-  .cta-section p{ color:#eaf7fd; line-height:1.9; max-width:480px; }
+  .cta-section p{ color:#eaf7fd; line-height:1.9; max-width:440px; margin-bottom:28px; }
+  .cta-contact-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .cta-contact-list a, .cta-contact-list div{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:700;
+    font-size:0.96rem;
+    color:#fff;
+  }
+  .cta-contact-list .ic{
+    width:38px; height:38px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.16);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.05rem;
+    flex-shrink:0;
+  }
+  .cta-contact-list a{ text-decoration:none; transition:opacity .2s ease; }
+  .cta-contact-list a:hover{ opacity:0.8; }
   .cta-form{
     background:rgba(255,255,255,0.14);
     border:1px solid rgba(255,255,255,0.35);
     border-radius:26px;
-    padding:28px;
+    padding:32px;
     backdrop-filter:blur(6px);
     display:flex;
     flex-direction:column;
+    justify-content:center;
     gap:14px;
     position:relative;
     z-index:1;
   }
-  .cta-form input{
+  .cta-form input, .cta-form select{
     padding:14px 16px;
     border-radius:14px;
     border:none;
     outline:none;
     font-family:'Almarai';
     font-size:0.92rem;
+    color:var(--navy);
+    background:#fff;
+    appearance:none;
+    -webkit-appearance:none;
   }
+  .cta-form select{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233a5876' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:left 14px center;
+    background-size:16px;
+    padding-left:38px;
+  }
+  .cta-form select:invalid{ color:#7c93a6; }
   .cta-form button{
     background:var(--navy);
     color:#fff;
@@ -705,15 +773,15 @@
     max-width:1200px;
     margin:0 auto;
     display:grid;
-    grid-template-columns:1.4fr 0.8fr 0.8fr 1fr;
-    gap:40px;
+    grid-template-columns:1.3fr 0.9fr 0.9fr 1.1fr;
+    gap:36px;
     padding-bottom:44px;
     border-bottom:1px solid rgba(255,255,255,0.12);
   }
   .footer-grid .brand{ color:#fff; margin-bottom:14px; }
-  .footer-grid p.desc{ font-size:0.88rem; line-height:1.9; color:#a9c3d6; max-width:280px; }
+  .footer-grid p.desc{ font-size:0.88rem; line-height:1.9; color:#a9c3d6; max-width:320px; }
   .footer-grid h5{ color:#fff; font-family:'Almarai'; font-weight:800; margin-bottom:16px; font-size:0.98rem; }
-  .footer-grid ul li{ margin-bottom:10px; font-size:0.88rem; }
+  .footer-grid ul li{ margin-bottom:10px; font-size:0.88rem; line-height:1.6; }
   .footer-grid ul li a:hover{ color:#fff; }
   .social-row{ display:flex; gap:10px; margin-top:18px; }
   .social-row a{
@@ -729,9 +797,13 @@
     margin:24px auto 0;
     display:flex;
     justify-content:space-between;
+    align-items:center;
     font-size:0.8rem;
     color:#8fa9bd;
   }
+  .footer-bottom-left{ display:flex; align-items:center; gap:16px; }
+  .footer-bottom-left a{ color:#8fa9bd; text-decoration:underline; }
+  .footer-bottom-left a:hover{ color:#fff; }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width:980px){
@@ -760,9 +832,10 @@
     .hero-actions{ gap:10px; margin-bottom:24px; }
     .btn-primary, .btn-ghost{ padding:13px 22px; font-size:0.9rem; width:100%; justify-content:center; }
     .hero-actions{ flex-direction:column; }
-    .hero-stats{ gap:20px; }
-    .hero-stats div h3{ font-size:1.5rem; }
-    .hero-stats div span{ font-size:0.72rem; }
+    .hero-stats{ max-width:100%; padding:14px 4px; }
+    .hero-stats div{ padding:0 6px; }
+    .hero-stats div h3{ font-size:1.25rem; }
+    .hero-stats div span{ font-size:0.66rem; }
     .section{ padding:56px 20px; }
     .section-head h2{ font-size:1.7rem; }
     .cards-grid{ grid-template-columns:1fr; }
@@ -774,6 +847,7 @@
     .footer-grid{ grid-template-columns:1fr; gap:30px; }
     footer{ padding:50px 20px 24px; }
     .footer-bottom{ flex-direction:column; gap:8px; text-align:center; }
+    .footer-bottom-left{ flex-direction:column; gap:6px; }
     .hero-badge{ display:none; }
   }
 </style>
@@ -1055,13 +1129,13 @@
 <!-- CONTACT / CTA -->
 <section class="section" id="contact" style="padding-top:20px;">
   <div class="cta-section">
-    <div>
+    <div class="cta-text">
       <h2>جاهز لابتسامة تستحقها؟</h2>
       <p>احجز موعدك الآن مع فريق Teeth.ly، وخذ خطوتك الأولى نحو صحة فموية مثالية وثقة تدوم.</p>
-      <div style="display:flex; gap:24px; margin-top:24px; flex-wrap:wrap;">
-        <div>📍 شارع الجمهورية، طرابلس</div>
-        <div>📞 218918883918+</div>
-        <a href="https://wa.me/218918883918" target="_blank" rel="noopener" style="color:#fff; font-weight:800; text-decoration:underline;">💬 راسلنا واتساب</a>
+      <div class="cta-contact-list">
+        <div><span class="ic">📍</span> شارع الجمهورية، طرابلس</div>
+        <a href="tel:+218918883918"><span class="ic">📞</span> 218918883918+</a>
+        <a href="https://wa.me/218918883918" target="_blank" rel="noopener"><span class="ic">💬</span> راسلنا عبر واتساب</a>
       </div>
     </div>
     <form class="cta-form" id="bookingForm" action="https://formsubmit.co/ajax/tech.co.ly@gmail.com" method="POST">
@@ -1070,7 +1144,16 @@
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="الاسم الكامل" placeholder="الاسم الكامل" required>
       <input type="tel" name="رقم الهاتف" placeholder="رقم الهاتف" required>
-      <input type="text" name="الخدمة المطلوبة" placeholder="الخدمة المطلوبة">
+      <select name="القسم المطلوب" required>
+        <option value="" disabled selected>اختر القسم المطلوب</option>
+        <option value="الاستقبال والاستشارة">الاستقبال والاستشارة</option>
+        <option value="الكشف والفحص الدوري">الكشف والفحص الدوري</option>
+        <option value="خلع الأسنان الجراحي">خلع الأسنان الجراحي</option>
+        <option value="طب أسنان الأطفال">طب أسنان الأطفال</option>
+        <option value="زراعة الأسنان">زراعة الأسنان</option>
+        <option value="الأشعة والتصوير الرقمي">الأشعة والتصوير الرقمي</option>
+        <option value="أخرى">أخرى / غير محدد</option>
+      </select>
       <button type="submit" id="bookingSubmitBtn">تأكيد الحجز 🦷</button>
       <p id="bookingStatus" style="font-size:0.82rem; color:#eaf7fd; text-align:center; margin:0; display:none;"></p>
     </form>
@@ -1122,8 +1205,10 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Teeth.ly — جميع الحقوق محفوظة</span>
-    <a href="#" id="privacyLinkFooter" style="text-decoration:underline;">سياسة الخصوصية</a>
+    <div class="footer-bottom-left">
+      <span>© 2026 Teeth.ly — جميع الحقوق محفوظة</span>
+      <a href="#" id="privacyLinkFooter">سياسة الخصوصية</a>
+    </div>
     <span>صُمم بعناية لابتسامتك</span>
   </div>
 </footer>
